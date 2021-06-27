@@ -18,6 +18,7 @@ Capybara::SpecHelper.run_specs TestSessions::Mechanize, 'Mechanize', capybara_sk
   send_keys
   css
   download
+  attach_file
   scroll_to
   rect
 ]

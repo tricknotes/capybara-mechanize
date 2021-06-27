@@ -28,6 +28,7 @@ session_describe = Capybara::SpecHelper.run_specs TestSessions::RemoteMechanize,
   send_keys
   css
   download
+  attach_file
   scroll_to
   rect
 ]
