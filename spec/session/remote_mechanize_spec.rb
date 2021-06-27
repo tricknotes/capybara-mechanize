@@ -28,6 +28,8 @@ session_describe = Capybara::SpecHelper.run_specs TestSessions::RemoteMechanize,
   send_keys
   css
   download
+  scroll_to
+  rect
 ]
 
 session_describe.include_context('remote tests')
