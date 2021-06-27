@@ -1,0 +1,38 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    strategy:
+      matrix:
+        ruby-version:
+          - 2.3.7
+          # - 2.4.4
+          # - 2.5.1
+          # - jruby
+          # - ruby-head
+        gemfile:
+          - Gemfile
+          - gemfiles/Gemfile.capybara_2
+
+    env:
+      BUNDLE_GEMFILE: ${{ matrix.gemfile }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+      - name: Install dependencies
+        run: |
+          gem update --system
+          gem install bundler
+          gem --version
+          bundle --version
+          bundle install --jobs 4 --retry 3
+      - name: Run tests
+        run: |
+          bundle exec rspec
