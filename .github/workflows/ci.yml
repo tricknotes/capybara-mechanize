@@ -32,7 +32,7 @@ jobs:
           gem install bundler
           gem --version
           bundle --version
-          bundle install --jobs 4 --retry 3
+          bundle update --jobs 4 --retry 3
       - name: Run tests
         run: |
           bundle exec rspec
